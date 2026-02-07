@@ -14,7 +14,190 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      video_generations: {
+        Row: {
+          completion_tokens: number | null
+          created_at: string
+          error_message: string | null
+          id: string
+          model_used: string
+          processing_time_ms: number | null
+          project_id: string | null
+          prompt_tokens: number | null
+          status: string
+        }
+        Insert: {
+          completion_tokens?: number | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          model_used?: string
+          processing_time_ms?: number | null
+          project_id?: string | null
+          prompt_tokens?: number | null
+          status?: string
+        }
+        Update: {
+          completion_tokens?: number | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          model_used?: string
+          processing_time_ms?: number | null
+          project_id?: string | null
+          prompt_tokens?: number | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_generations_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "video_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_projects: {
+        Row: {
+          algorithm_settings: Json
+          created_at: string
+          duration_seconds: number | null
+          generated_script: Json | null
+          id: string
+          likes_count: number | null
+          prompt: string
+          resolution: string | null
+          status: string
+          style: string
+          thumbnail_url: string | null
+          updated_at: string
+          user_id: string | null
+          video_url: string | null
+          views_count: number | null
+        }
+        Insert: {
+          algorithm_settings?: Json
+          created_at?: string
+          duration_seconds?: number | null
+          generated_script?: Json | null
+          id?: string
+          likes_count?: number | null
+          prompt: string
+          resolution?: string | null
+          status?: string
+          style?: string
+          thumbnail_url?: string | null
+          updated_at?: string
+          user_id?: string | null
+          video_url?: string | null
+          views_count?: number | null
+        }
+        Update: {
+          algorithm_settings?: Json
+          created_at?: string
+          duration_seconds?: number | null
+          generated_script?: Json | null
+          id?: string
+          likes_count?: number | null
+          prompt?: string
+          resolution?: string | null
+          status?: string
+          style?: string
+          thumbnail_url?: string | null
+          updated_at?: string
+          user_id?: string | null
+          video_url?: string | null
+          views_count?: number | null
+        }
+        Relationships: []
+      }
+      video_scenes: {
+        Row: {
+          animation_config: Json
+          code_content: string | null
+          created_at: string
+          duration_ms: number
+          id: string
+          language: string | null
+          project_id: string
+          scene_order: number
+          scene_type: string
+          start_time_ms: number
+        }
+        Insert: {
+          animation_config?: Json
+          code_content?: string | null
+          created_at?: string
+          duration_ms?: number
+          id?: string
+          language?: string | null
+          project_id: string
+          scene_order: number
+          scene_type: string
+          start_time_ms?: number
+        }
+        Update: {
+          animation_config?: Json
+          code_content?: string | null
+          created_at?: string
+          duration_ms?: number
+          id?: string
+          language?: string | null
+          project_id?: string
+          scene_order?: number
+          scene_type?: string
+          start_time_ms?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_scenes_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "video_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_templates: {
+        Row: {
+          created_at: string
+          default_settings: Json
+          description: string | null
+          id: string
+          is_public: boolean | null
+          name: string
+          preview_url: string | null
+          scene_templates: Json
+          style: string
+          usage_count: number | null
+        }
+        Insert: {
+          created_at?: string
+          default_settings?: Json
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          name: string
+          preview_url?: string | null
+          scene_templates?: Json
+          style: string
+          usage_count?: number | null
+        }
+        Update: {
+          created_at?: string
+          default_settings?: Json
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          name?: string
+          preview_url?: string | null
+          scene_templates?: Json
+          style?: string
+          usage_count?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

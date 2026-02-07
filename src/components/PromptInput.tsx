@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Wand2, Code, Palette, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const vibeOptions = [
   { id: 'matrix', label: 'Matrix', icon: Code },
@@ -14,6 +15,7 @@ export const PromptInput = () => {
   const [prompt, setPrompt] = useState('');
   const [selectedVibe, setSelectedVibe] = useState('neon');
   const [isFocused, setIsFocused] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -40,7 +42,7 @@ export const PromptInput = () => {
                 className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground px-4 py-3 text-base"
               />
             </div>
-            <Button variant="hero" size="lg" className="shrink-0">
+            <Button variant="hero" size="lg" className="shrink-0" onClick={() => navigate('/generator')}>
               <Wand2 className="w-5 h-5" />
               Generate
             </Button>
